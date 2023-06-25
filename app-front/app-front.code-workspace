@@ -5,7 +5,23 @@
 		},
 		{
 			"path": "../app-back"
+		},
+		{
+			"path": "../data_generator"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 5435,
+				"driver": "PostgreSQL",
+				"name": "dev",
+				"database": "analytics",
+				"username": "postgres",
+				"password": "123pswd"
+			}
+		]
+	}
 }

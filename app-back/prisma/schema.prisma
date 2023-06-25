@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["views"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model user {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  username String @unique
+}
+
+model visitor {
+  id Int @id @default(autoincrement())
+  age Int
+  gender Gender
+  visit visit[]  @relation("club_visitor")
+}
+
+model club {
+  id Int @id @default(autoincrement())
+  name String
+  description String?
+  visits visit[] @relation("club_visit")
+}
+
+model visit {
+  id Int @id @default(autoincrement())
+  club club @relation("club_visit", fields: [club_id], references: [id], onDelete: Cascade)
+  club_id Int
+  visitor visitor @relation("club_visitor", fields: [visitor_id], references: [id], onDelete: Cascade)
+  visitor_id Int 
+  start_time DateTime
+  end_time DateTime
+  duration Float
+}

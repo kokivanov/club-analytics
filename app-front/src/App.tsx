@@ -5,6 +5,8 @@ import { MainPage } from './components/main';
 import ClubsPage from './components/clubs';
 import NotFoundPage from './components/notfound';
 import ClubPage from './components/club';
+import RegisterPage from './components/register';
+import LoginPage from './components/login';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<MainPage></MainPage>}></Route>
         <Route path='/clubs' element={<ClubsPage></ClubsPage>}></Route>
         <Route path='/clubs/:id' element={<ClubPage></ClubPage>}></Route>
+        <Route path='/register' element={<RegisterPage></RegisterPage>}></Route>
+        <Route path='/login' element={<LoginPage></LoginPage>}></Route>
         <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
       
