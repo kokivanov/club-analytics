@@ -11,10 +11,21 @@ services:
       POSTGRES_DB: analytics
 
   app:
-    build: .
+    build: ./app-back/
+    hostname: api
     ports:
       - 3012:3012
     depends_on:
       - db
     links:
       - "db:database"
+  
+  front:
+    build: ./app-front/
+    ports:
+      - 3000:3000
+    depends_on:
+      - app
+    links:
+      - "app:api_app"
+  

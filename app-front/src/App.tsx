@@ -21,7 +21,7 @@ function App() {
         <Route path='/' element={<MainPage></MainPage>}></Route>
         <Route path='/clubs' element={<ClubsPage Wrapper={Wrapper}></ClubsPage>}></Route>
         <Route path='/clubs/:id' element={<ClubPage Wrapper={Wrapper}></ClubPage>}></Route>
-        <Route path='/register' element={<RegisterPage></RegisterPage>}></Route>
+        <Route path='/register' element={<RegisterPage Wrapper={Wrapper}></RegisterPage>}></Route>
         <Route path='/login' element={<LoginPage Wrapper={Wrapper}></LoginPage>}></Route>
         <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>

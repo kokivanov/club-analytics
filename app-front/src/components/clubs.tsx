@@ -24,7 +24,7 @@ function ClubsPage({Wrapper} : {Wrapper: APIWrapper}) {
     
     if (Wrapper.is_loggen_in)
         return <div className='flex flex-col'>
-            {clubList.data? clubList.data.map((el) => {
+            {clubList.data && clubList.data.length > 0  ? clubList.data.map((el) => {
                 return <ClubsSplash key={el.id.toString()} c_name={el.name} c_id={el.id.toString()}/>
             }) : <div>
                     <h1 className="self-center text-center font-bold text-zinc-800 text-4xl mt-20">Тут поки нічого немає.</h1>

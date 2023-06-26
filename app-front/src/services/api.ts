@@ -160,7 +160,7 @@ export class APIWrapper {
         try{
             await axios({
                 method: 'post',
-                url: this.base_url + '/auth/regsiter',
+                url: this.base_url + '/auth/register',
                 headers: {
                     'Access-Control-Allow-Origin': '*'
                 },
