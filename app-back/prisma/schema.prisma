@@ -46,4 +46,33 @@ model visit {
   start_time DateTime
   end_time DateTime
   duration Float
+  with_tutor Boolean
 }
+
+view week_stats {
+  club_id Int
+  wday Int
+  avg_visits Int
+
+  @@id([club_id, wday])
+}
+
+view age_stats {
+  age String
+  club_id Int
+  count Int
+
+  @@id([club_id, age])
+}
+
+view avg_time {
+  club_id Int @id
+  avg_time String
+}
+
+view avg_per_week {
+  club_id Int @id
+  avg Float
+}
+
+

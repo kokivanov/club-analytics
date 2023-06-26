@@ -1,10 +1,15 @@
 -- CreateEnum
 CREATE TYPE "Gender" AS ENUM ('MALE', 'FEMALE');
 
--- AlterTable
-CREATE SEQUENCE user_id_seq;
-ALTER TABLE "user" ALTER COLUMN "id" SET DEFAULT nextval('user_id_seq');
-ALTER SEQUENCE user_id_seq OWNED BY "user"."id";
+-- CreateTable
+CREATE TABLE "user" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "username" TEXT NOT NULL,
+
+    CONSTRAINT "user_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "visitor" (
@@ -32,9 +37,16 @@ CREATE TABLE "visit" (
     "start_time" TIMESTAMP(3) NOT NULL,
     "end_time" TIMESTAMP(3) NOT NULL,
     "duration" DOUBLE PRECISION NOT NULL,
+    "with_tutor" BOOLEAN NOT NULL,
 
     CONSTRAINT "visit_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_username_key" ON "user"("username");
 
 -- AddForeignKey
 ALTER TABLE "visit" ADD CONSTRAINT "visit_club_id_fkey" FOREIGN KEY ("club_id") REFERENCES "club"("id") ON DELETE CASCADE ON UPDATE CASCADE;

@@ -1,5 +1,3 @@
-import { Type } from "class-transformer"
-
 export class weeklyStats {
     'Понеділок': number
     'Вівторок': number
@@ -30,15 +28,13 @@ export class ageStats {
 }
 
 export class ClubStatsEntity {
-    name: string
-    @Type(() => weeklyStats)
-    weekStats: weeklyStats
-    @Type(() => ageStats)
-    byAge: ageStats
-    trainingTimeMean: number
-    trainingAmountMean: number
-    timeStartMean: string
-    withTutor: number
+    name!: string
+    weekStats!: weeklyStats
+    byAge!: ageStats
+    trainingTimeMean!: number
+    trainingAmountMean!: number
+    timeStartMean!: string
+    withTutor!: number
 
     constructor(o : Partial<ClubStatsEntity>) {
         Object.assign(this, o)

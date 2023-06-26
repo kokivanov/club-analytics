@@ -1,0 +1,7 @@
+FROM node:alpine as dev
+
+WORKDIR /usr/analytics-app/
+COPY . .
+RUN npm i
+EXPOSE 3012
+CMD [ "npm", "run", "start" ]
